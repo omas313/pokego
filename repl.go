@@ -15,6 +15,8 @@ func startRepl() {
 		scanner.Scan()
 
 		words := cleanInput(scanner.Text())
+
+		// if not text was entered, continue i.e. we are emulating a shell
 		if len(words) == 0 {
 			continue
 		}
