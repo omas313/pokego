@@ -1,5 +1,18 @@
 package main
 
+import "github.com/omas313/pokego/services/pokeapi"
+
+// the struct that will hold the stateful information for the application
+type Config struct {
+	pokeapiClient           pokeapi.Client
+	nextLocationAreaURL     *string
+	previousLocationAreaURL *string
+}
+
 func main() {
-	startRepl()
+	config := Config{
+		pokeapiClient: pokeapi.NewClient(),
+	}
+
+	startRepl(&config)
 }

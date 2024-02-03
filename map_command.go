@@ -3,16 +3,12 @@ package main
 import (
 	"fmt"
 	"log"
-
-	"github.com/omas313/pokego/services/pokeapi"
 )
 
-func mapCommand() error {
+func mapCommand(config *Config) error {
 	fmt.Println()
 
-	pokeapiClient := pokeapi.NewClient()
-
-	locationAreaResponse, err := pokeapiClient.ListLocationAreas()
+	locationAreaResponse, err := config.pokeapiClient.ListLocationAreas()
 	if err != nil {
 		log.Fatalf("failed to list location areas: %v", err)
 	}

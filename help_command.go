@@ -2,7 +2,7 @@ package main
 
 import "fmt"
 
-func helpCommand() error {
+func helpCommand(config *Config) error {
 	fmt.Println()
 	fmt.Println("Welcome to Pokego!")
 	fmt.Println("Usage:")
