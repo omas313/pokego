@@ -17,9 +17,14 @@ type LocationAreaResponse struct {
 	} `json:"results"`
 }
 
-const endpoint = baseURL + "/location-area"
+const default_endpoint = baseURL + "/location-area"
 
-func (c *Client) ListLocationAreas() (LocationAreaResponse, error) {
+func (c *Client) ListLocationAreas(url *string) (LocationAreaResponse, error) {
+	endpoint := default_endpoint
+	if url != nil {
+		endpoint = *url
+	}
+
 	req, err := http.NewRequest("GET", endpoint, nil)
 	if err != nil {
 		return LocationAreaResponse{}, err

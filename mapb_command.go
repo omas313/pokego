@@ -5,10 +5,10 @@ import (
 	"log"
 )
 
-func mapCommand(config *Config) error {
+func mapbCommand(config *Config) error {
 	fmt.Println()
 
-	locationAreaResponse, err := config.pokeapiClient.ListLocationAreas(config.nextLocationAreaURL)
+	locationAreaResponse, err := config.pokeapiClient.ListLocationAreas(config.previousLocationAreaURL)
 	if err != nil {
 		log.Fatalf("failed to list location areas: %v", err)
 	}
