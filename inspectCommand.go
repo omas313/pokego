@@ -13,8 +13,7 @@ func inspectCommand(config *Config, args ...string) error {
 	pokemonName := args[0]
 	pokemon, exists := config.caughtPokemon[pokemonName]
 	if !exists {
-		fmt.Println(pokemonName + " is not in the pokedex")
-		return nil
+		return fmt.Errorf("Pokemon not found in pokédex: %s", pokemonName)
 	}
 
 	fmt.Println("Information on " + pokemon.Name + ":")

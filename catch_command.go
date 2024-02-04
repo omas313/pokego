@@ -14,7 +14,7 @@ func catchCommand(config *Config, args ...string) error {
 	pokemonName := args[0]
 	pokemon, err := config.pokeapiClient.GetPokemon(pokemonName)
 	if err != nil {
-		return err
+		return errors.New("Error fetching pokemon: " + pokemonName)
 	}
 
 	fmt.Println()
