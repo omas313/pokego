@@ -4,7 +4,7 @@ import (
 	"fmt"
 )
 
-func mapCommand(config *Config) error {
+func mapCommand(config *Config, args ...string) error {
 	locationAreaResponse, err := config.pokeapiClient.ListLocationAreas(config.nextLocationAreaURL)
 	if err != nil {
 		return err

@@ -5,7 +5,7 @@ import (
 	"fmt"
 )
 
-func mapbCommand(config *Config) error {
+func mapbCommand(config *Config, args ...string) error {
 	if config.previousLocationAreaURL == nil {
 		return errors.New("no previous location areas")
 	}
