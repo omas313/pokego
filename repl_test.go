@@ -4,6 +4,8 @@ import (
 	"testing"
 )
 
+// run all tests with: go test ./...
+
 func TestCleanInput(t *testing.T) {
 	cases := []struct {
 		input    string

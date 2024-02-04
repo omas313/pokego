@@ -1,6 +1,10 @@
 package main
 
-import "github.com/omas313/pokego/internal/pokeapi"
+import (
+	"time"
+
+	"github.com/omas313/pokego/internal/pokeapi"
+)
 
 // the struct that will hold the stateful information for the application
 type Config struct {
@@ -11,7 +15,7 @@ type Config struct {
 
 func main() {
 	config := Config{
-		pokeapiClient: pokeapi.NewClient(),
+		pokeapiClient: pokeapi.NewClient(time.Hour),
 	}
 
 	startRepl(&config)
