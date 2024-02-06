@@ -7,11 +7,15 @@ import (
 )
 
 func catchCommand(config *Config, args ...string) error {
-	if len(args) != 1 {
-		return errors.New("catch command requires 1 argument")
+	if config.state == Exploration {
+		return errors.New("You can only catch pokemon in a battle")
 	}
 
-	pokemonName := args[0]
+	if config.currentPokemon == nil {
+		return errors.New("No pokemon to catch")
+	}
+
+	pokemonName := config.currentPokemon.Name
 	pokemon, err := config.pokeapiClient.GetPokemon(pokemonName)
 	if err != nil {
 		return errors.New("Error fetching pokemon: " + pokemonName)
@@ -31,6 +35,8 @@ func catchCommand(config *Config, args ...string) error {
 
 	fmt.Println("Gotcha! " + pokemon.Name + " was caught!")
 	config.caughtPokemon[pokemon.Name] = pokemon
+	config.state = Exploration
+	config.currentPokemon = nil
 
 	fmt.Println()
 	return nil

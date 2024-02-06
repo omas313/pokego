@@ -97,5 +97,15 @@ func getCommands() map[string]Command {
 			description: "Lists caught pokemon",
 			callback:    pokedexCommand,
 		},
+		"battle": {
+			name:        "battle",
+			description: "Enters battle with a pokemon",
+			callback:    battleCommand,
+		},
+		"run": {
+			name:        "run",
+			description: "Runs from battle",
+			callback:    runCommand,
+		},
 	}
 }

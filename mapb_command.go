@@ -6,6 +6,10 @@ import (
 )
 
 func mapbCommand(config *Config, args ...string) error {
+	if config.state == Battle {
+		return errors.New("You can't explore while in a battle")
+	}
+
 	if config.previousLocationAreaURL == nil {
 		return errors.New("no previous location areas")
 	}
